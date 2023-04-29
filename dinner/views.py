@@ -49,6 +49,6 @@ def getMyBooks(request, nickname):
 @api_view(['GET'])
 def getAllBooks(request):
     if request.method == 'GET':
-        books = Bookpost.objects.all()
+        books = Bookpost.objects.filter()
         serializer = BookpostSerializer(books, many=True)
         return Response(serializer.data)
