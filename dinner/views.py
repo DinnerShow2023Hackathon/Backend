@@ -41,11 +41,14 @@ def addBook(request, nickname):
 def getMyBooks(request, nickname):
     if request.method == 'GET':
         id = findID(nickname)
-        books = Bookpost.objects.get(whos=id)
+        books = Bookpost.objects.filter(whos=id)
         serializer = BookpostSerializer(books, many=True)
         return Response(serializer.data)
 
 
 @api_view(['GET'])
 def getAllBooks(request):
-    return
+    if request.method == 'GET':
+        books = Bookpost.objects.all()
+        serializer = BookpostSerializer(books, many=True)
+        return Response(serializer.data)
