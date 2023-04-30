@@ -17,7 +17,7 @@ def findID(nickname):
     return id
 
 @api_view(['POST'])
-def signup(request, nickname):
+def signup(request):
     if request.method == 'POST':
         data = request.data
         serializer = UserSerializer(data=data)
